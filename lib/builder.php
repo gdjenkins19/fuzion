@@ -251,5 +251,3 @@ class Builder {
     }
 
 }
-
-Builder::BuildRoutes();
