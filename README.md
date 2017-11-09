@@ -17,7 +17,5 @@ Install Composer (https://www.abeautifulsite.net/installing-composer-on-os-x)
 
 # REQUIREMENTS
 
-1. Resource Factory: __constructor(parameter=NULL) ex. Database(type)
-2. Remove buildDB from Database and into Builder
-3. middle_ware???
-4. 
+1. Remove buildDB from Database and into Builder
+2. Implement the Login/Authenticate/Authorize Framework
