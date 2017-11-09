@@ -54,4 +54,8 @@ class FuzionJwt {
 
         return max($all, $res) >= $level;
     }
+
+    public function getId() {
+        return $this->decoded_jwt->jti;
+    }
 }

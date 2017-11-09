@@ -8,11 +8,11 @@ require 'vendor/autoload.php';
 class Builder {
 
     public static function BuildTestJwts() {
-        file_put_contents("jwt_write.txt",      FuzionJwt::Build(['id'=>1,'resources'=>['All'=>2]])->encode() );
-        file_put_contents("jwt_read.txt",       FuzionJwt::Build(['id'=>2,'resources'=>['All'=>1]])->encode() );
-        file_put_contents("jwt_one.txt",        FuzionJwt::Build(['id'=>3,'resources'=>['ResourceOne'=>2]])->encode() );
-        file_put_contents("jwt_expired.txt",    FuzionJwt::Build(['id'=>4,'resources'=>['All'=>2],'exp'=>0])->encode() );
-        file_put_contents("jwt_blacklist.txt",  FuzionJwt::Build(['id'=>0,'resources'=>['All'=>2]])->encode() );
+        file_put_contents("jwt_write.txt",      FuzionJwt::Build(['jti'=>2,'resources'=>['All'=>2]])->encode() );
+        file_put_contents("jwt_read.txt",       FuzionJwt::Build(['jti'=>3,'resources'=>['All'=>1]])->encode() );
+        file_put_contents("jwt_one.txt",        FuzionJwt::Build(['jti'=>4,'resources'=>['ResourceOne'=>2]])->encode() );
+        file_put_contents("jwt_expired.txt",    FuzionJwt::Build(['jti'=>5,'resources'=>['All'=>2],'exp'=>0])->encode() );
+        file_put_contents("jwt_blacklist.txt",  FuzionJwt::Build(['jti'=>0,'resources'=>['All'=>2]])->encode() );
     }
 
     public static function BuildDatabase() {
