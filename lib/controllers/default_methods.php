@@ -5,9 +5,11 @@ namespace Controllers;
 use \Response;
 
 trait DefaultGet {
-    public function GET($args) {
+    public function GET( \Request $request, $args) {
+        $this->authorize($request, 1);
+
         try {
-            $params = $this->request->getParams($args);
+            $params = $request->getParams($args);
             $data = $this->model->read($params);
         } catch (\Exception $e) {
             throw new Response(500,'Controller: '.$e->getMessage(),$args);
@@ -18,9 +20,11 @@ trait DefaultGet {
 }
 
 trait DefaultPut {
-    public function PUT($args) {
+    public function PUT($request, $args) {
+        $this->authorize($request, 2);
+        
         try {
-            $params = $this->request->getParams($args);
+            $params = $request->getParams($args);
             $data = $this->model->update($params);
         } catch (\Exception $e) {
             throw new Response(500,'Controller: '.$e->getMessage(),$args);
@@ -31,9 +35,11 @@ trait DefaultPut {
 }
 
 trait DefaultPost {
-    public function POST($args) {
+    public function POST($request, $args) {
+        $this->authorize($request, 2);
+        
         try {
-            $params = $this->request->getParams($args);
+            $params = $request->getParams($args);
             $data = $this->model->create($params);
         } catch (\Exception $e) {
             throw new Response(500,'Controller: '.$e->getMessage(),$args);
@@ -44,9 +50,11 @@ trait DefaultPost {
 }
 
 trait DefaultDelete {
-    public function DELETE($args) {
+    public function DELETE($request, $args) {
+        $this->authorize($request, 2);
+        
         try {
-            $params = $this->request->getParams($args);
+            $params = $request->getParams($args);
             $data = $this->model->delete($params);
         } catch (\Exception $e) {
             throw new Response(500,'Controller: '.$e->getMessage(),$args);

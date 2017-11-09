@@ -16,7 +16,7 @@ class MODEL_NAME extends Controller {
     }
 
     public function _resource() {
-        return $resource;
+        return self::$resource;
     }
 
 }

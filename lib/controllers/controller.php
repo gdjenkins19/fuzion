@@ -12,4 +12,9 @@ abstract class Controller {
         $this->model = $model;
     }
 
+    public function authorize($request, $level) {
+        $jwt = $request->getAttribute('jwt');
+
+        if (! $jwt->authorized($this->_resource(),$level)) throw new \Response(401,'Insufficient Permissions');        
+    }
 }

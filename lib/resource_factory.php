@@ -3,23 +3,23 @@
 class ResourceFactory {
 
     static public function Build($resource) {
-        $obj = NULL;
-        $class = new ReflectionClass($resource);
+        $reflector = new ReflectionClass($resource);
+        $paramObjects = [];
 
-        $paramObjects = NULL;
+        $constructor = $reflector->getConstructor();
 
-        if ($class->hasMethod('__construct')) {
-            $constructor = new ReflectionMethod($resource, '__construct');
+        if (isset($constructor)) {
             $parameters = $constructor->getParameters();
             if (count($parameters) > 0) {
-                $paramObjects = [];
-                foreach($parameters as $parameter) {
-                    $paramObjects[] = self::Build($parameter);
+                foreach($parameters as $param) {
+                    if(!$param->isOptional()) {
+                        $paramObjects[] = self::Build($param->getClass()->name);
+                    }
                 }
             }
         }
 
-        $obj = new $resource($paramObjects);
+        $obj = $reflector->newInstanceArgs($paramObjects);
 
         return $obj;
     }

@@ -27,14 +27,17 @@
             "@composer dump-autoload"
         ],
         "build-routes": "Builder::BuildRoutes",
+        "build-jwts": "Builder::BuildTestJwts",
         "build-all": [
             "@build-database",
             "@build-models",
-            "@build-controllers"
+            "@build-controllers",
+            "@build-jwts"
         ],
         "build-clean": [
             "rm -fr lib/controllers/auto",
             "rm -fr lib/models/auto",
+            "rm jwt*",
             "@composer dump-autoload"
         ],
         "post-autoload-dump": [
