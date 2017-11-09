@@ -1,0 +1,19 @@
+{
+    "default": {
+        "dbname": "resources",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "q1w2e3r4"
+    },
+    "build": {
+        "dbname": "resources",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "q1w2e3r4",
+        "generate": [
+            "lib/database/sql/resource_one.sql",
+            "lib/database/sql/resource_two.sql",
+            "lib/database/sql/resource_three.sql"
+        ]
+    }
+}

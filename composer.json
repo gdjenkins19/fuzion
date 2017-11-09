@@ -1,0 +1,44 @@
+{
+    "name": "klowd/fuzion",
+    "license": "proprietary",
+    "description": "Base framework for creating API Endpoints for Fuzion API.",
+    "require": {
+        "slim/slim": "^3.0",
+        "firebase/php-jwt": "^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4",
+        "phpunit/php-invoker": "^1.1",
+        "phpunit/dbunit": "^3.0"
+    },
+    "autoload": {
+        "classmap": [
+          "lib"
+        ]
+    },
+    "scripts": {
+        "build-database": "Builder::BuildDatabase",
+        "build-models": [
+            "Builder::BuildModels",
+            "@composer dump-autoload"
+        ],
+        "build-controllers": [
+            "Builder::BuildControllers",
+            "@composer dump-autoload"
+        ],
+        "build-routes": "Builder::BuildRoutes",
+        "build-all": [
+            "@build-database",
+            "@build-models",
+            "@build-controllers"
+        ],
+        "build-clean": [
+            "rm -fr lib/controllers/auto",
+            "rm -fr lib/models/auto",
+            "@composer dump-autoload"
+        ],
+        "post-autoload-dump": [
+            "@build-routes"
+        ]
+    }
+}
