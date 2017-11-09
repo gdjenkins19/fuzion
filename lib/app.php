@@ -25,7 +25,7 @@ class App {
             $router = new Router($this->routes_file);
             $resource = $router->getResource($request->getMethod(), $request->getUrl());
                 
-            list($controller_class,$method,$args) = $resource;
+            list($controller_class, $method, $args) = $resource;
             
             $controller = ResourceFactory::Build($controller_class);
 

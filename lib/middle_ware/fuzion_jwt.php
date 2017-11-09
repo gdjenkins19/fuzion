@@ -26,9 +26,7 @@ class FuzionJwt {
             $token[$k] = $v;
         }
 
-        //$jwt = JWT::encode($token, self::$secret_key, 'HS256');
-        //$decoded_jwt = JWT::decode($jwt, self::$secret_key, array('HS256'));
-        $fuzion_jwt = new FuzionJwt($token); //$decoded_jwt);
+        $fuzion_jwt = new FuzionJwt($token);
         return $fuzion_jwt;
     }
 
